@@ -1,5 +1,10 @@
 {% extends "index.html" %}
 
+{% block categories %}
+  {% for category in categories %}
+    <a href="{% url 'categories_posts' pk=category.pk %}">{{category.name}}</a> &nbsp
+  {% endfor %}
+{% endblock %}
 
 {% block content %}
 
@@ -16,6 +21,7 @@
       <a class="readmore" href="{% url 'post_details' pk=post.pk %}">Read more</a></div>
   {% endfor %}
 
+  {% include "pagination.html" with page=posts %}
 
 
 {% endblock %}

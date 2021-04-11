@@ -1,7 +1,7 @@
 <html>
 <head>
   {% load static %}
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
@@ -15,10 +15,8 @@
 <div id="top">
 
   <div class="menubar">
-    Category1 &nbsp
-    Category2 &nbsp
-    Category3 &nbsp
-    Category3 &nbsp
+    {% block categories %}
+    {% endblock %}
 
   </div>
 
