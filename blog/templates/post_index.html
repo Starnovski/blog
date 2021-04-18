@@ -1,9 +1,16 @@
 {% extends "index.html" %}
 
 {% block categories %}
+
   {% for category in categories %}
     <a href="{% url 'categories_posts' pk=category.pk %}">{{category.name}}</a> &nbsp
   {% endfor %}
+
+{% endblock %}
+
+
+{% block stats %}
+  <img src="data:image/png;base64,{{data}}" style="height:40%; width:100%;"/>
 {% endblock %}
 
 {% block content %}

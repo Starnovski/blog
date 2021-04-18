@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-import matplotlib as mpl
+from .services import *
+import matplotlib.pyplot as ppl
+import io
+import urllib, base64
 from .models import Post, Comment, Category
 
 # Create your views here.
@@ -8,27 +10,34 @@ from .models import Post, Comment, Category
 def post_index(request):
     categories = Category.objects.all()
     posts = Post.objects.all()
-    paginator = Paginator(posts, 5)
-    page = request.GET.get('page')
-    try:
-        posts = paginator.page(page)
-    except PageNotAnInteger:
-        posts = paginator.page(1)
-    except EmptyPage:
-        posts = paginator.page(paginator.num_pages)
-    return render(request, 'post_index.html', {'page':page, 'posts': posts, 'categories':categories})
+
+    #Getting stats and category names to create diagram
+    percents = post_stats(categories, posts)
+    category_names = get_category_names(categories)
+
+    #Creating image of matplotlib diagram
+    ppl.clf()
+    ppl.bar((category_names), (percents))
+    fig = ppl.gcf()
+    buf = io.BytesIO()
+    fig.savefig(buf, format='png')
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    uri = urllib.parse.quote(string)
+
+    #Using 'pagination' function, written down in services.py
+    posts, page = pagination(request, posts, 5)
+
+    return render(request, 'post_index.html', {'page':page, 'posts': posts, 'categories':categories, 'data':uri, 'percents':percents})
+
 
 def categories_posts(request, pk):
     categories = Category.objects.all()
     posts = Post.objects.filter(category = pk)
-    paginator = Paginator(posts, 5)
-    page = request.GET.get('page')
-    try:
-        posts = paginator.page(page)
-    except PageNotAnInteger:
-        posts = paginator.page(1)
-    except EmptyPage:
-        posts = paginator.page(paginator.num_pages)
+
+    #Using 'pagination' function, written down in services.py
+    posts, page = pagination(request, posts, 5)
+
     return render(request, 'post_index.html', {'page':page, 'posts': posts, 'categories':categories})
 
 
