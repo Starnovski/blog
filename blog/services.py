@@ -1,6 +1,8 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import request
 from .models import Post, Comment, Category
+import json
+import urllib
 
 #Some fragments of code are used in more than one view, so I decided to create that file
 #to put it here
@@ -33,3 +35,10 @@ def get_category_names(categories):
         category_names.append(category.name)
 
     return category_names
+
+
+def get_forum_latest_topic():
+    url = "http://localhost:3000/api/v1/topics/latest"
+    response = urllib.request.urlopen(url)
+    forum_topic = json.loads(response.read())
+    return forum_topic

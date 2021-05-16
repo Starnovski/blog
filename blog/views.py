@@ -25,10 +25,12 @@ def post_index(request):
     string = base64.b64encode(buf.read())
     uri = urllib.parse.quote(string)
 
+    forum_topic = get_forum_latest_topic()
+
     #Using 'pagination' function, written down in services.py
     posts, page = pagination(request, posts, 5)
 
-    return render(request, 'post_index.html', {'page':page, 'posts': posts, 'categories':categories, 'data':uri, 'percents':percents})
+    return render(request, 'post_index.html', {'page':page, 'posts': posts, 'categories':categories, 'data':uri, 'percents':percents, 'forum_topic':forum_topic})
 
 
 def categories_posts(request, pk):
