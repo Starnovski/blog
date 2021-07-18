@@ -2,32 +2,47 @@
 
 {% block categories %}
   {% for category in categories %}
-    <a href="{% url 'categories_posts' pk=category.pk %}">{{category.name}}</a> &nbsp
+    <a class="topbar_menu" href="{% url 'categories_posts' pk=category.pk %}">{{category.name}}</a> &nbsp
   {% endfor %}
 {% endblock %}
 
 {% block content %}
 
-    <div class="pointer">
-    </div>
-    <div class="title">
-      <h3>{{post.title}}</h3>
-    </div>
+<div class="item1"><a href="{% url 'post_details' pk=post.pk %}"><h3>{{post.title}}</h3></a></div>
 
 
-    <div class="desc">{{post.text}}
+  <div class="item1">Comments <b>{{post.comments.count}}</b><br><br>
+    {{post.text}}
+  </div>
+    <br>
+    ------------------------------------------
+    <br>
 
-    <br><br>
-    <a class="readmore" href="#">Read more</a>|<a class="readmore" href="#">Read more</a>
 
-    <div id="comments">
+    <div class="item1">
+    <b>Add a comment</b><br>
+
+    <form method="POST" class="comment-form">{% csrf_token %}
+    <table>
+      {% csrf_token %}
+      {{ form.as_p }}
+    </table>
+    <button type="submit" class="btn btn-dark">Save</button>
+  </form>
+    -----------------------------------------
+</div>
+
+
+      <div class="item1">
+      <h2>Comments:</h2>
     {% for comment in comments %}
-    <h2>Comments:</h2>
 
     <h4>Author: {{comment.author}}</h4>
+    <b>{{comment.created}}</b><br>
     {{comment.body}}
     <br><br>
     {% endfor %}
+
 
   </div>
 </div>

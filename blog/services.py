@@ -20,6 +20,7 @@ def pagination(request, object, number_of_posts):
     return posts, page
 
 
+
 def post_stats(categories, posts):
     percents = []
     for category in categories:

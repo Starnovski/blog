@@ -1,57 +1,48 @@
 <html>
 <head>
   {% load static %}
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="{% static 'style.css' %}">
+
 </head>
 
 
 <body>
+  <div id="topbar">
 
-<div id="name">
-  Template name
-</div>
-<div id="top">
-
-  <div class="menubar">
     {% block categories %}
     {% endblock %}
 
   </div>
+  <div id="mainphoto">
+    <img src="{% static '12.png' %}">
+  </div>
+  <div id="top">
+  <h1>Blog</h1><br>
 
 </div>
+<div id="transp">
+  <div class="grid-transp">
+    {% block progres %}
+    {% endblock %}
+    <div class="grid-item">{% block forum %}
+    {% endblock %}</div>
 
 
-<div id="content">
-  <div id="posts">
+
+  </div>
+</div>
+  <div id="content">
     <div class="grid-container">
-
-      {% block content %}
-      {% endblock %}
-
+     {% block content %}
+     {% endblock %}
     </div>
+
   </div>
 
-  <div id="info">
-    <h3>Most recent topic from forum</h3>
-    {% block forum %}
-    {% endblock %}
+  <div id="footer">
   </div>
-  <div id="stats">
-    <h3>% of posts in all categories</h3>
-    {% block stats %}
-    {% endblock %}
-  </div>
-
-
-
-</div>
-
-<div id="footer">
-  Footer stuff
-</div>
-
 </body>
 
 </html>
