@@ -2,10 +2,18 @@
 {% load static %}
 
 {% block categories %}
+  <div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown link
+  </a>
 
-  {% for category in categories %}
-    <a class="topbar_menu" href="{% url 'categories_posts' pk=category.pk %}">{{category.name}}</a> &nbsp
-  {% endfor %}
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    {% for category in categories %}
+      <li><a class="dropdown-item" href="{% url 'categories_posts' pk=category.pk %}">{{category.name}}</a></li>
+    {% endfor %}
+  </ul>
+  </div>
+
 
 {% endblock %}
 

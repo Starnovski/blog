@@ -1,9 +1,17 @@
 {% extends "index.html" %}
 
 {% block categories %}
-  {% for category in categories %}
-    <a class="topbar_menu" href="{% url 'categories_posts' pk=category.pk %}">{{category.name}}</a> &nbsp
-  {% endfor %}
+  <div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown link
+  </a>
+
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    {% for category in categories %}
+      <li><a class="dropdown-item" href="{% url 'categories_posts' pk=category.pk %}">{{category.name}}</a></li>
+    {% endfor %}
+  </ul>
+  </div>
 {% endblock %}
 
 {% block content %}
@@ -36,8 +44,8 @@
       <div class="item1">
       <h2>Comments:</h2>
     {% for comment in comments %}
-
-    <h4>Author: {{comment.author}}</h4>
+    <br>
+    <h5>Author: {{comment.author}}</h5>
     <b>{{comment.created}}</b><br>
     {{comment.body}}
     <br><br>
