@@ -39,8 +39,11 @@ def get_category_names(categories):
 
 
 def get_forum_latest_topic():
-    #url = "http://localhost:3000/api/v1/topics/latest"
-    #response = urllib.request.urlopen(url)
-    #forum_topic = json.loads(response.read())
-    forum_topic = []
+    url = "http://localhost:3000/api/v1/topics/latest"
+    try:
+        response = urllib.request.urlopen(url)
+        forum_topic = json.loads(response.read())
+    except:
+        forum_topic = []
+
     return forum_topic

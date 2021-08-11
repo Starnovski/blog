@@ -52,8 +52,15 @@
 
 {% block forum %}
   {% if forum_topic %}
-    <h3>Latest topic on forum</h3>
-    {{forum_topic.title}}
+    <h3 style="color:red;">Latest topic on forum</h3>
+    <br>
+    {{forum_topic.title}}<br><br>
+    {{forum_topic.body}}<br><br>
+    <a href="#">Go and read</a>
   {% else %}
+    <h3 style="color:red;">Problem with connection</h3>
+    <br>
+    Can't get the latest topic from forum through its API.<br>
+    The forum probably is not active.
   {% endif %}
 {% endblock %}
