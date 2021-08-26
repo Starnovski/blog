@@ -28,7 +28,7 @@ def post_index(request):
     #Using 'pagination' function, written down in services.py
     posts, page = pagination(request, posts, 5)
 
-    return render(request, 'post_index.html', {'page':page, 'posts': posts, 'categories':categories, 'cat_stats':cat_stats, 'forum_topic':forum_topic})
+    return render(request, 'post_index.html', {'page':page, 'posts': posts, 'categories':categories, 'cat_stats':cat_stats, 'forum_topic':forum_topic,})
 
 
 def categories_posts(request, pk):
