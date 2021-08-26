@@ -54,9 +54,9 @@
   {% if forum_topic %}
     <h3 style="color:red;">Latest topic on forum</h3>
     <br>
-    {{forum_topic}}
-
-    <a href="">Go and read</a>
+    {{forum_topic.topic.title}}<br><br>
+    {{forum_topic.topic.body}}<br><br>
+    <a href="{{forum_topic.absolute_url}}">Go and read</a>
   {% else %}
     <h3 style="color:red;">Problem with connection</h3>
     <br>

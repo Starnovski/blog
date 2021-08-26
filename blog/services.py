@@ -42,7 +42,7 @@ def get_forum_latest_topic():
     url = "https://sheltered-ravine-08414.herokuapp.com/api/v1/topics/latest.json"
     try:
         response = urllib.request.urlopen(url)
-        forum_topic = "fsd"
+        forum_topic = json.loads(response.read())
     except:
         forum_topic = []
 
