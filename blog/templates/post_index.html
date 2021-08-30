@@ -50,6 +50,7 @@
 </div>
 {% endblock %}
 
+
 {% block forum %}
   {% if forum_topic %}
     <h3 style="color:red;">Latest topic on forum</h3>
@@ -61,6 +62,6 @@
     <h3 style="color:red;">Problem with connection</h3>
     <br>
     Can't get the latest topic from forum through its API.<br>
-    The forum probably is not active.
+    The forum probably is not active or there in no access to an external servers.
   {% endif %}
 {% endblock %}

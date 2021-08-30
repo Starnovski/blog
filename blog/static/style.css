@@ -65,6 +65,27 @@ h3 {color:blue;}
 .dropdown{margin:0.6rem;}
 label{display: block;}
 
+#pagination
+{
+  display: inline;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  align-items: center;
+  width:25%;
+  margin:auto;
+
+}
+
+.paginbutton
+{
+  color:white;
+  background-color:black;
+  border-radius: 4%;
+  margin-left: 10px;
+  padding:8px;
+  box-shadow: 1px 1px 2px black;
+
+}
 
 @media (min-width: 761px){
 .grid-transp{
@@ -75,45 +96,58 @@ label{display: block;}
             grid-template-columns: 50% 50%;
             width:100%;
           }
+
+.grid-container {
+            margin:0rem;
+      		  display: grid;
+      		  grid-gap: 22px 22px;
+      		  grid-template-columns: 200px auto;}
+.item1 {
+      	     grid-column-start: 1;
+      	     grid-column-end: 3;}
+
 }
 
 @media (max-width: 760px){
-  .grid-transp{
-              padding:4rem;
-              display: grid;
-              grid-gap: 22px 22px;
-              text-decoration-color: white;
-              grid-template-columns: auto;
-              width:100%;
+.grid-transp{
+            padding:4rem;
+            display: grid;
+            grid-gap: 22px 22px;
+            text-decoration-color: white;
+            grid-template-columns: auto;
+            width:100%;}
+
+.grid-container {
+            margin:0,1rem;
+            display: grid;
+            grid-gap: 22px 22px;
+            grid-template-columns: auto;}
+
+textarea {max-width:250px;}
+
+.grid-item{
+            grid-column-start: 1;
+            grid-column-end: 1;
+}
+
+.item1 {
+      	     grid-column-start: 1;
+      	     grid-column-end: 1;}
+
+            #pagination
+            {
+              display: inline;
+              align-items: center;
+              width:35%;
+              margin:auto;
+
             }
-
 }
 
-@media (min-width: 761px)
-{
-    .grid-container {
-        margin:0rem;
-		display: grid;
-		grid-gap: 22px 22px;
-		grid-template-columns: 200px auto;}
-	.item1 {
-	  grid-column-start: 1;
-	  grid-column-end: 3;
 
-}
 textarea {min-width:600px;}
-    }
-@media (max-width: 760px)
-{
-    .grid-container {
-        margin:0,1rem;
-		display: grid;
-		grid-gap: 22px 22px;
-		grid-template-columns: auto;
-    }
 
-    textarea {max-width:250px;}
-}
+
 
 p {margin: 1rem;}
 
@@ -124,11 +158,11 @@ progress {
   box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
 }
 progress::-webkit-progress-bar {
-  background-color: yellow;
+  background-color: white;
   border-radius: 1px;
 }
 progress::-webkit-progress-value {
-  background-color: blue;
+  background-color: green;
   border-radius: 1px;
   box-shadow: 1px 1px 5px 3px rgba( 255, 0, 0, 0.8 );
 }

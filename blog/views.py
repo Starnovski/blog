@@ -45,6 +45,7 @@ def post_details(request, pk):
     categories = Category.objects.all()
     post = get_object_or_404(Post, pk=pk)
     comments = post.comments.all()
+    #Getting a form
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():

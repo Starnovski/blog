@@ -20,7 +20,7 @@ def pagination(request, object, number_of_posts):
     return posts, page
 
 
-
+#Calculates amounts of posts from different categories in percents
 def post_stats(categories, posts):
     percents = []
     for category in categories:
@@ -29,7 +29,8 @@ def post_stats(categories, posts):
 
     return percents
 
-
+#Returns a list of category names, used to create the statistic
+#progress bars
 def get_category_names(categories):
     category_names = []
     for category in categories:
@@ -38,6 +39,10 @@ def get_category_names(categories):
     return category_names
 
 
+#It won't work on pythonanywhere free account, since I have no acces
+#to external servers that are not on a pythonanywhere whitelist.
+#Also, I probably should make this method more "flexible", because right now
+#it only chcecks for predefined url
 def get_forum_latest_topic():
     url = "https://sheltered-ravine-08414.herokuapp.com/api/v1/topics/latest.json"
     try:
